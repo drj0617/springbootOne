@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dang.springboot.mapper.ClassTransactionInfoMapper">
+  <resultMap id="BaseResultMap" type="com.dang.springboot.pojo.ClassTransactionInfo">
+    <id column="class_transaction_id" jdbcType="INTEGER" property="classTransactionId" />
+    <result column="class_id" jdbcType="INTEGER" property="classId" />
+    <result column="class_transaction_tile" jdbcType="VARCHAR" property="classTransactionTile" />
+    <result column="class_transaction_content" jdbcType="VARCHAR" property="classTransactionContent" />
+    <result column="class_transaction_person" jdbcType="VARCHAR" property="classTransactionPerson" />
+    <result column="class_transaction_time" jdbcType="TIMESTAMP" property="classTransactionTime" />
+    <result column="class_transaction_remar" jdbcType="VARCHAR" property="classTransactionRemar" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    class_transaction_id, class_id, class_transaction_tile, class_transaction_content, 
+    class_transaction_person, class_transaction_time, class_transaction_remar
+  </sql>
+  <select id="selectByExample" parameterType="com.dang.springboot.pojo.ClassTransactionInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from class_transaction_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from class_transaction_info
+    where class_transaction_id = #{classTransactionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from class_transaction_info
+    where class_transaction_id = #{classTransactionId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dang.springboot.pojo.ClassTransactionInfoExample">
+    delete from class_transaction_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dang.springboot.pojo.ClassTransactionInfo">
+    insert into class_transaction_info (class_transaction_id, class_id, class_transaction_tile, 
+      class_transaction_content, class_transaction_person, 
+      class_transaction_time, class_transaction_remar
+      )
+    values (#{classTransactionId,jdbcType=INTEGER}, #{classId,jdbcType=INTEGER}, #{classTransactionTile,jdbcType=VARCHAR}, 
+      #{classTransactionContent,jdbcType=VARCHAR}, #{classTransactionPerson,jdbcType=VARCHAR}, 
+      #{classTransactionTime,jdbcType=TIMESTAMP}, #{classTransactionRemar,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dang.springboot.pojo.ClassTransactionInfo">
+    insert into class_transaction_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="classTransactionId != null">
+        class_transaction_id,
+      </if>
+      <if test="classId != null">
+        class_id,
+      </if>
+      <if test="classTransactionTile != null">
+        class_transaction_tile,
+      </if>
+      <if test="classTransactionContent != null">
+        class_transaction_content,
+      </if>
+      <if test="classTransactionPerson != null">
+        class_transaction_person,
+      </if>
+      <if test="classTransactionTime != null">
+        class_transaction_time,
+      </if>
+      <if test="classTransactionRemar != null">
+        class_transaction_remar,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="classTransactionId != null">
+        #{classTransactionId,jdbcType=INTEGER},
+      </if>
+      <if test="classId != null">
+        #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="classTransactionTile != null">
+        #{classTransactionTile,jdbcType=VARCHAR},
+      </if>
+      <if test="classTransactionContent != null">
+        #{classTransactionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="classTransactionPerson != null">
+        #{classTransactionPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="classTransactionTime != null">
+        #{classTransactionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classTransactionRemar != null">
+        #{classTransactionRemar,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dang.springboot.pojo.ClassTransactionInfoExample" resultType="java.lang.Long">
+    select count(*) from class_transaction_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update class_transaction_info
+    <set>
+      <if test="record.classTransactionId != null">
+        class_transaction_id = #{record.classTransactionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.classId != null">
+        class_id = #{record.classId,jdbcType=INTEGER},
+      </if>
+      <if test="record.classTransactionTile != null">
+        class_transaction_tile = #{record.classTransactionTile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classTransactionContent != null">
+        class_transaction_content = #{record.classTransactionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classTransactionPerson != null">
+        class_transaction_person = #{record.classTransactionPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classTransactionTime != null">
+        class_transaction_time = #{record.classTransactionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.classTransactionRemar != null">
+        class_transaction_remar = #{record.classTransactionRemar,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update class_transaction_info
+    set class_transaction_id = #{record.classTransactionId,jdbcType=INTEGER},
+      class_id = #{record.classId,jdbcType=INTEGER},
+      class_transaction_tile = #{record.classTransactionTile,jdbcType=VARCHAR},
+      class_transaction_content = #{record.classTransactionContent,jdbcType=VARCHAR},
+      class_transaction_person = #{record.classTransactionPerson,jdbcType=VARCHAR},
+      class_transaction_time = #{record.classTransactionTime,jdbcType=TIMESTAMP},
+      class_transaction_remar = #{record.classTransactionRemar,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dang.springboot.pojo.ClassTransactionInfo">
+    update class_transaction_info
+    <set>
+      <if test="classId != null">
+        class_id = #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="classTransactionTile != null">
+        class_transaction_tile = #{classTransactionTile,jdbcType=VARCHAR},
+      </if>
+      <if test="classTransactionContent != null">
+        class_transaction_content = #{classTransactionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="classTransactionPerson != null">
+        class_transaction_person = #{classTransactionPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="classTransactionTime != null">
+        class_transaction_time = #{classTransactionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classTransactionRemar != null">
+        class_transaction_remar = #{classTransactionRemar,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where class_transaction_id = #{classTransactionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dang.springboot.pojo.ClassTransactionInfo">
+    update class_transaction_info
+    set class_id = #{classId,jdbcType=INTEGER},
+      class_transaction_tile = #{classTransactionTile,jdbcType=VARCHAR},
+      class_transaction_content = #{classTransactionContent,jdbcType=VARCHAR},
+      class_transaction_person = #{classTransactionPerson,jdbcType=VARCHAR},
+      class_transaction_time = #{classTransactionTime,jdbcType=TIMESTAMP},
+      class_transaction_remar = #{classTransactionRemar,jdbcType=VARCHAR}
+    where class_transaction_id = #{classTransactionId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="testTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否去除⾃动⽣成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库连接的信息：驱动类、连接地址、⽤户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql:///ssm?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;nullCatalogMeansCurrent = true"
+			userId="root"
+			password="123456">
+		</jdbcConnection>
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 
+			和 NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!-- targetProject:⽣成POJO类的位置 -->
+		<javaModelGenerator
+			targetPackage="com.dang.springboot.pojo"
+			targetProject="Springboot/src/main/java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- targetProject:mapper映射⽂件⽣成的位置 -->
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="Springboot/src/main/resources">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<!-- targetPackage：mapper接⼝⽣成的位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.dang.springboot.mapper"
+			targetProject="Springboot/src/main/java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<!-- 指定数据库表 -->
+		<table tableName="anthorty_info" domainObjectName="AnthortyInfo"></table>
+		<table tableName="attendance_info" domainObjectName="AttendanceInfo"></table>
+		<table tableName="audition_info" domainObjectName="AuditionInfo"></table>
+		<table tableName="class_info" domainObjectName="ClassInfo"></table>
+		<table tableName="class_transaction_info" domainObjectName="ClassTransactionInfo"></table>
+		<table tableName="classroom_info" domainObjectName="ClassroomInfo"></table>
+		<table tableName="communication_info" domainObjectName="CommunicationInfo"></table>
+		<table tableName="data_dictionary" domainObjectName="DataDictionary"></table>
+		<table tableName="discipline_info" domainObjectName="DisciplineInfo"></table>
+		<table tableName="email_info" domainObjectName="EmailInfo"></table>
+		<table tableName="evaluation_info" domainObjectName="EvaluationInfo"></table>
+		<table tableName="market_active" domainObjectName="MarketActive"></table>
+		<table tableName="message_info" domainObjectName="MessageInfo"></table>
+		<table tableName="role_anthorty_info" domainObjectName="RoleAnthortyInfo"></table>
+		<table tableName="role_info" domainObjectName="RoleInfo"></table>
+		<table tableName="staff_info" domainObjectName="StaffInfo"></table>
+		<table tableName="staff_salary" domainObjectName="StaffSalary"></table>
+		<table tableName="student_info" domainObjectName="StudentInfo"></table>
+		<table tableName="student_payment" domainObjectName="StudentPayment"></table>
+		<table tableName="student_write_grade" domainObjectName="StudentWriteWrade"></table>
+		<table tableName="syllabus_info" domainObjectName="SyllabusInfo"></table>
+		<table tableName="template_info" domainObjectName="TemplateInfo"></table>
+		<table tableName="track_record_info" domainObjectName="TrackRecordInfo"></table>
+		
+		
+	</context>
+</generatorConfiguration>
